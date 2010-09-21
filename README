@@ -1,0 +1,29 @@
+UBAM - User Behaviour Analysis Module
+
+SYNOPSIS
+
+  UBAM it's a presents a simple REST API for managing users and logging it's actions.
+  Reports based on information gathered are beyond the scope of this proyect.
+
+
+DEVELOPERS
+
+  UBAM is currently being developed by:
+    Fabio Renzo Panettieri (fpanettieri@xoomcode.com)
+
+
+DEPENDENCIES
+
+    rails  (Recomended >= 2.3.8)
+
+
+LICENSE
+
+  UBAM is released under LGPL.
+  Copyright © 2010, XoomCode. All rights reserved.
+
+
+BUGS
+  If you find a bug, please report it at
+  http://github.com/fpanettieri/UBAM
+
