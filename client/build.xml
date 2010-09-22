@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="UBAM" default="build">
+
+	<property environment="env" />
+	<property name="FLEX_HOME" value="${env.FLEX_HOME}"/>
+
+	<property name="SRC_DIR" value="src" />
+	<property name="LIB_DIR" value="lib" />
+
+	<property name="BIN_DIR" value="bin" />
+	<property name="SWC" value="${BIN_DIR}/ubam.swc" />
+
+	<!-- this is important since it contains the Flex mxmlc/compc/etc. ant task definitions -->
+	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
+
+	<target name="build">
+		<mkdir dir="${BIN_DIR}" />
+
+		<compc 
+			output="${SWC}" 
+			debug="false" 
+			incremental="true"
+			actionscript-file-encoding="UTF-8"
+			keep-generated-actionscript="false"
+			target-player="10.0.0"
+			optimize="true">
+
+			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+			<source-path path-element="${SRC_DIR}" />
+			<include-sources dir="${SRC_DIR}">
+				<include name="**/*.as" />
+				<include name="**/*.mxml" />
+			</include-sources>
+
+			<source-path path-element="${FLEX_HOME}/frameworks"/>
+
+			<compiler.library-path dir="${LIB_DIR}" append="true">
+				<include name="*.swc" />
+			</compiler.library-path>
+
+			<compiler.library-path dir="${FLEX_HOME}/frameworks" append="true">
+				<include name="libs" />
+				<include name="../bundles/{locale}" />
+			</compiler.library-path>
+
+		</compc>
+	</target>
+
+	<target name="clean">
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="${BIN_DIR}" includes="*" defaultexcludes="false"/>
+		</delete>
+		<delete dir="${BIN_DIR}"/>
+	</target>
+
+</project>
+
