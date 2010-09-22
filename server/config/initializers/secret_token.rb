@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Server::Application.config.secret_token = 'c14487b3a9df1e8c72cdf999581e9d9e7a0a81d351b66de6a1c8e8a4a2f7a2ab649f8a3266ddb1e1125e757de5e7117dd3affcfbd42f77dd967c879b0268af38'
+UBAM::Application.config.secret_token = 'c875841f756f5c7cfd07fed8d958d6caa80e2fe9f56720c29ab8e5a8444034c97bb666e98d4e315f827c6eda7290b68c8ec7e93d49f2d93f87a58e1b888fda0d'

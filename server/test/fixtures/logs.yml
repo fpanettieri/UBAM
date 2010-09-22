@@ -5,11 +5,11 @@ one:
   user: 
   action: 
   detail: MyString
-  time: 2010-09-22 12:53:24
+  time: 2010-09-22 13:24:28
 
 two:
   app: 
   user: 
   action: 
   detail: MyString
-  time: 2010-09-22 12:53:24
+  time: 2010-09-22 13:24:28

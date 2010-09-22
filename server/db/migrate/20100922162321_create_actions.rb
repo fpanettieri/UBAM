@@ -2,6 +2,9 @@ class CreateActions < ActiveRecord::Migration
   def self.up
     create_table :actions do |t|
       t.string :name
+      t.references :app
+
+      t.timestamps
     end
   end
 
