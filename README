@@ -14,7 +14,7 @@ DEVELOPERS
 
 DEPENDENCIES
 
-    rails  (Recomended >= 2.3.8)
+    rails  (Recomended >= 3.0.0)
 
 
 LICENSE
