@@ -4,14 +4,17 @@ class Log < ActiveRecord::Base
   belongs_to :action
   
   def self.parse(json)
-	  obj = ActiveSupport::JSON.decode(json)
-		Log.create(
-	  	:app => App.find_or_create_by_name(obj["app"]), 
-	  	:user => User.find_or_create_by_name(obj["user"]), 
-	  	:action => Action.find_or_create_by_name(obj["action"]), 
-	  	:detail => obj["detail"], 
-	  	:time => obj["time"]
-	  )
+  	transaction do
+			ActiveSupport::JSON.decode(json).each do |log|
+				Log.create(
+					:app => App.find_or_create_by_name(log["app"]), 
+					:user => User.find_or_create_by_name(log["user"]), 
+					:action => Action.find_or_create_by_name(log["action"]), 
+					:detail => log["detail"], 
+					:time => log["time"]
+				)
+			end
+	  end
   end
 end
 

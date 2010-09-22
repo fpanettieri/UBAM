@@ -7,7 +7,7 @@ class LogsController < ApplicationController
   end
 
   def create
-  	params[:log].each {|log| Log.parse(log)}
+		Log.parse(params[:log])
 		render :text => "ok"
   rescue
 		render :text => "error"
