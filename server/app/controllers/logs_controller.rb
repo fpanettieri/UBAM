@@ -1,20 +1,15 @@
 class LogsController < ApplicationController
   def index
-  end
-
-  def show
-  end
-
-  def new
+		render :xml => Log.all.to_xml(
+      :skip_types => true,
+      :dasherize => false
+    )
   end
 
   def create
+  	params[:log].each {|log| Log.parse(log)}
+		render :text => "ok"
+  rescue
+		render :text => "error"
   end
-
-  def update
-  end
-
-  def destroy
-  end
-
 end

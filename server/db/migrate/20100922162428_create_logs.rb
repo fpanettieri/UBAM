@@ -6,8 +6,6 @@ class CreateLogs < ActiveRecord::Migration
       t.references :action
       t.string :detail
       t.datetime :time
-
-      t.timestamps
     end
   end
 
