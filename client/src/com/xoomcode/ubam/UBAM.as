@@ -1,5 +1,6 @@
 package com.xoomcode.ubam
 {
+	// FACADE
 	public class UBAM
 	{
 		// Singleton instance
@@ -7,19 +8,23 @@ package com.xoomcode.ubam
 
 		// Singleton members
 		private var logging:Boolean = false;
-		private var queue:LogQueue = new LogQueue();
-		private var dispatcher:LogDispatcher = new LogDispatcher();
+		private var queue:LogQueue;
+		private var dispatcher:LogDispatcher;
+		private var builder:LogBuilder;
 		
 		public var server:String = "http://localhost/ubam";
 		public var app:String = "Unknown";
 		public var user:String = "Unknown";
-		public var frequency:int = 60;
+		public var interval:int = 60;
 		
 		public function UBAM()
 		{
 			if (_instance != null){
 				  throw new Error("Singleton instantiation");
 			}
+			queue = new LogQueue();
+			dispatcher = new LogDispatcher(this, queue);
+			builder = new LogBuilder(this);
 		}
 
 		/**
@@ -29,7 +34,7 @@ package com.xoomcode.ubam
 		public static function start():void
 		{
 			_instance.logging = true;
-			//
+			_instance.dispatcher.start();
 		}
 
 		/**
@@ -39,6 +44,7 @@ package com.xoomcode.ubam
 		public static function pause():void
 		{
 			_instance.logging = false;
+			_instance.dispatcher.stop();
 		}
 		
 		/**
@@ -48,22 +54,18 @@ package com.xoomcode.ubam
 		public static function stop():void
 		{
 			_instance.logging = false;
-			// clean events
+			_instance.dispatcher.stop();
+			_instance.queue.clear();
 		}
 		
 		public static function log(action:String, detail:String):void
 		{
 			if(_instance.logging){
-				_instance._log(action, detail);
+				_instance.queue.push(_instance.builder.build(action, detail));
 			}
 		}
 		
-		public function _log(action:String, detail:String):void
-		{
-			// create new Log
-			// push it to the queue
-		}
-
 	}
+	
 }
 
