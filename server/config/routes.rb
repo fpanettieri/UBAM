@@ -1,8 +1,4 @@
 UBAM::Application.routes.draw do
-  resources :logs do
-    collection do
-      get  :index
-      post :create
-    end
-  end
+	post 'logs/create'
+	root :to => "logs#create"
 end
