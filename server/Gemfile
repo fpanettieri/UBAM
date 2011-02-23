@@ -12,15 +12,3 @@ gem 'json'
 # Bulk inserts gem
 gem 'activerecord-import'
 
-group :development do
-  
-  # Thin web server
-  gem 'thin'
-
-  # Ruby 1.8 debug  
-  gem 'ruby-debug'
-  
-  # Ruby 1.9 debug  
-  #gem 'ruby-debug19'
-end
-
