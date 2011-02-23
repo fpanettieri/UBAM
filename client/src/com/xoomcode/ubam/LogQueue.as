@@ -23,6 +23,11 @@ package com.xoomcode.ubam
 			return json.slice(0,-1) + "]";
 		}
 		
+		public function get length():int
+		{
+			return queue.length;
+		}
+		
 	}
 }
 

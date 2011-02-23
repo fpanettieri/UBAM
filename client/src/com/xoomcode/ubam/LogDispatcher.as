@@ -1,8 +1,8 @@
 package com.xoomcode.ubam
 {
 	import flash.utils.Timer;
-  import flash.events.TimerEvent;
-  import flash.net.*;
+	import flash.events.TimerEvent;
+	import flash.net.*;
             
 	public class LogDispatcher
 	{
@@ -13,13 +13,14 @@ package com.xoomcode.ubam
 		public function LogDispatcher(ubam:UBAM, queue:LogQueue)
 		{
 			this.ubam = ubam;
+			this.queue = queue;
 		}
 		
 		public function start():void
 		{
 			timer = new Timer(ubam.interval);
-      timer.addEventListener(TimerEvent.TIMER, updateTimer);
-      timer.start();
+			timer.addEventListener(TimerEvent.TIMER, updateTimer);
+			timer.start();
 		}
 		
 		public function stop():void
@@ -30,20 +31,27 @@ package com.xoomcode.ubam
 			}
 		}
 		
-		private function updateTimer(evt:TimerEvent):void
+		public function flush():void
 		{
-			var json:String = queue.toJSON();
+			if(queue.length == 0) return;
+			
+		 	var json:String = queue.toJSON();
 			queue.clear();
 			
-			var request : URLRequest = new URLRequest(ubam.server);  
+			var request:URLRequest = new URLRequest(ubam.server);  
 			request.method = URLRequestMethod.POST; 
 
-			var data : URLVariables = new URLVariables();
+			var data:URLVariables = new URLVariables();
 			data.log = json;
 			request.data = data; 
 			
-			var loader : URLLoader = new URLLoader();  
+			var loader:URLLoader = new URLLoader();  
 			loader.load(request);
+		}
+		
+		private function updateTimer(evt:TimerEvent):void
+		{
+			flush();
 		}
 		
 	}

@@ -19,7 +19,7 @@
 		<compc 
 			output="${SWC}" 
 			debug="false" 
-			incremental="true"
+			incremental="false"
 			actionscript-file-encoding="UTF-8"
 			keep-generated-actionscript="false"
 			target-player="10.0.0"
@@ -33,10 +33,6 @@
 			</include-sources>
 
 			<source-path path-element="${FLEX_HOME}/frameworks"/>
-
-			<compiler.library-path dir="${LIB_DIR}" append="true">
-				<include name="*.swc" />
-			</compiler.library-path>
 
 			<compiler.library-path dir="${FLEX_HOME}/frameworks" append="true">
 				<include name="libs" />

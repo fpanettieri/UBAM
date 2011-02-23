@@ -5,8 +5,9 @@ class Log < ActiveRecord::Base
   
   def self.parse(json)
   	transaction do
-			ActiveSupport::JSON.decode(json).each do |log|
-				Log.create(
+  		bulk = []
+			JSON.parse(json).each do |log|
+				bulk << Log.new(
 					:app => App.find_or_create_by_name(log["app"]), 
 					:user => User.find_or_create_by_name(log["user"]), 
 					:action => Action.find_or_create_by_name(log["action"]), 
@@ -14,6 +15,7 @@ class Log < ActiveRecord::Base
 					:time => log["time"]
 				)
 			end
+    	Log.import bulk
 	  end
   end
 end

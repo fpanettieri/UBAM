@@ -11,12 +11,12 @@ package com.xoomcode.ubam
 		public function toJSON():String
 		{
 			return '{' +
-				"'app':'" + app + "'," +
-				"'user':'" + user + "'," +
-				"'action':'" + action + "'," +
-				"'detail':'" + detail + "'," +
-				"'time':'" + time + "'" +
-			"}";
+				'"app":"' + app + '",' +
+				'"user":"' + user + '",' +
+				'"action":"' + action + '",' +
+				'"detail":"' + detail + '",' +
+				'"time":"' + time + '"' +
+			'}';
 		}
 	}
 }

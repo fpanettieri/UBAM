@@ -65,6 +65,31 @@ package com.xoomcode.ubam
 			}
 		}
 		
+		public static function flush():void
+		{
+			_instance.dispatcher.flush();
+		}
+		
+		public static function set server(server:String):void
+		{
+			_instance.server = server;
+		}
+		
+		public static function set app(app:String):void
+		{
+			_instance.app = app;
+		}
+		
+		public static function set user(user:String):void
+		{
+			_instance.user = user;
+		}
+		
+		public static function set interval(interval:int):void
+		{
+			_instance.interval = interval;
+		}
+		
 	}
 	
 }

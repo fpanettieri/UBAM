@@ -1,6 +1,26 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+# Current stable rails version
+gem 'rails', '3.0.4'
+
+# Postgres backend adapter
 gem 'pg'
-gem 'ruby-debug'
+
+# JSON parsing
+gem 'json'
+
+# Bulk inserts gem
+gem 'activerecord-import'
+
+group :development do
+  
+  # Thin web server
+  gem 'thin'
+
+  # Ruby 1.8 debug  
+  gem 'ruby-debug'
+  
+  # Ruby 1.9 debug  
+  #gem 'ruby-debug19'
+end
 
