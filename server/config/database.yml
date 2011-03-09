@@ -5,7 +5,7 @@ development:
   pool: 5
   username: postgres
   password: postgres
-  host: localhost
+  host: arsenico
   port: 5432
 
 test:

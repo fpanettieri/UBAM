@@ -12,3 +12,5 @@ gem 'json'
 # Bulk inserts gem
 gem 'activerecord-import'
 
+gem 'ruby-debug'
+
